@@ -7,16 +7,16 @@ import eu.veldsoft.no.thanks.model.Table;
  */
 public interface ArtificialIntelligence {
     /**
-     * The two possible choices.
-     */
-    public static enum Choice {TAKE_IT, NO_THANKS}
-
-    /**
      * Decision making procedure.
      *
      * @param table The table information.
      * @return The decision taken.
      */
     public Choice decision(Table table);
+
+    /**
+     * The two possible choices.
+     */
+    public static enum Choice {TAKE_IT, NO_THANKS}
 }
 

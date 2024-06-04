@@ -33,7 +33,7 @@ public class Table {
      *
      * @throws RuntimeException A setup failure.
      */
-    public void setup() throws RuntimeException {
+    public void setup() {
         /*
          * Shuffles the deck.
          */

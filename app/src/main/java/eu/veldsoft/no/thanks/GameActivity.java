@@ -23,15 +23,13 @@ import eu.veldsoft.no.thanks.model.Table;
  */
 public class GameActivity extends AppCompatActivity {
     /**
-     * The identifier for launching activity.
-     */
-    private static final int LAUNCH_PLAYERS_LIST_ACTIVITY = 1;
-
-    /**
      * Map of the card key and card image.
      */
     static final Map<String, Integer> CARDS_IMAGES = new HashMap<String, Integer>();
-
+    /**
+     * The identifier for launching activity.
+     */
+    private static final int LAUNCH_PLAYERS_LIST_ACTIVITY = 1;
     /**
      * Table object as mediator with the model.
      */
