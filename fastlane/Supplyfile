@@ -1,0 +1,30 @@
+# Supply configuration for Google Play Store
+# This file contains configuration for the supply action
+
+# Package name of your app
+package_name "eu.veldsoft.no.thanks"
+
+# Path to the JSON key file for Google Play Service Account
+# json_key "./google-play-service-account.json"
+
+# Track to upload to (internal, alpha, beta, production)
+# track "internal"
+
+# Skip uploading APK/AAB if you only want to upload metadata
+# skip_upload_apk true
+# skip_upload_aab true
+
+# Skip uploading metadata if you only want to upload APK/AAB
+# skip_upload_metadata true
+
+# Skip uploading screenshots
+# skip_upload_screenshots true
+
+# Skip uploading changelogs
+# skip_upload_changelogs true
+
+# Metadata path (relative to Supplyfile)
+# metadata_path "./metadata"
+
+# Root URL for Google Play API
+# root_url "https://www.googleapis.com/"

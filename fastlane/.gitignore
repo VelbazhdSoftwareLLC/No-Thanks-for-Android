@@ -1,0 +1,6 @@
+# Fastlane specific
+report.xml
+*.log
+*.html
+.DS_Store
+screenshots

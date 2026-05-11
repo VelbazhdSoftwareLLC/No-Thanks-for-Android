@@ -9,6 +9,18 @@
     android:visibility="invisible"
     tools:context=".GameActivity">
 
+    <Button
+        android:id="@+id/takeIt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/take_card_caption" />
+
+    <Button
+        android:id="@+id/noThanks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_thanks_caption" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,18 +43,6 @@
             android:layout_height="wrap_content"
             android:text="0" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/takeIt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/take_card_caption" />
-
-    <Button
-        android:id="@+id/noThanks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/no_thanks_caption" />
 
 
 </LinearLayout>

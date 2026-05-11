@@ -31,3 +31,14 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Fastlane
+.fastlane/
+Gemfile.lock
+.env
+
+# Ruby
+.rbenv-version
+.ruby-version
+.ruby-gemset
+.bundle/

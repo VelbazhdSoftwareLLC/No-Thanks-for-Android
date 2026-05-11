@@ -1,0 +1,91 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins
+# Uncomment the line below if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Build a debug APK"
+  lane :build_debug do
+    gradle(
+      task: "assembleDebug",
+      properties: {
+        "android.injected.signing.store.file" => "../keystore/debug.keystore",
+        "android.injected.signing.store.password" => "android",
+        "android.injected.signing.key.alias" => "androiddebugkey",
+        "android.injected.signing.key.password" => "android"
+      }
+    )
+  end
+
+  desc "Build a release APK"
+  lane :build_release do
+    gradle(
+      task: "assembleRelease",
+      properties: {
+        "android.injected.signing.store.file" => "../keystore/release.keystore",
+        "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["KEY_PASSWORD"]
+      }
+    )
+  end
+
+  desc "Deploy a new version to the Google Play Store"
+  lane :deploy do
+    build_release
+    upload_to_play_store(
+      track: "internal",
+      release_notes: File.read("../fastlane/metadata/en-US/release_notes.txt"),
+      metadata_path: "../fastlane/metadata",
+      apk_paths: ["../app/build/outputs/apk/release/app-release.apk"]
+    )
+  end
+
+  desc "Upload metadata to Google Play Store"
+  lane :upload_metadata do
+    upload_to_play_store(
+      track: "production",
+      metadata_path: "../fastlane/metadata",
+      skip_upload_apk: true,
+      skip_upload_aab: true,
+      skip_upload_changelogs: false
+    )
+  end
+
+  desc "Upload screenshots to Google Play Store"
+  lane :upload_screenshots do
+    upload_to_play_store(
+      track: "production",
+      metadata_path: "../fastlane/metadata",
+      skip_upload_apk: true,
+      skip_upload_aab: true,
+      skip_upload_changelogs: true,
+      skip_upload_metadata: true
+    )
+  end
+
+  desc "Clean the project"
+  lane :clean do
+    gradle(task: "clean")
+  end
+
+  # Error lanes
+  error do |lane, exception|
+    UI.error "Lane #{lane} failed with exception: #{exception}"
+  end
+end
